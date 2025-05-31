@@ -6,10 +6,7 @@ Una API desarrollada con **Python**, **TensorFlow** y **FastAPI** que utiliza re
 
 - **🔍 Detección Automática**: Identifica 4 tipos de condiciones en hojas de uva
 - **🎯 Alta Precisión**: Modelo optimizado con Keras Tuner
-- **🎥 Visualización del Proceso**: Video que muestra cómo la IA analiza la imagen
 - **📊 Análisis Detallado**: Probabilidades, descripción de enfermedades y recomendaciones
-- **🌐 Interfaz Web Intuitiva**: Fácil de usar, sin conocimientos técnicos requeridos
-- **📱 Responsive**: Funciona en computadores, tablets y móviles
 
 ## 🎯 Enfermedades Detectables
 
