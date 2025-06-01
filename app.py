@@ -170,12 +170,12 @@ predictor = GrapeDiseasePredictor(disease_model_path)
 
 @app.post("/predict")
 async def predict_endpoint(image: UploadFile = File(...)):
+    if image.filename is None:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No se proporcionó un archivo")
+    ext = image.filename.split('.')[-1].lower()
+    if ext not in ['jpg', 'jpeg']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El archivo debe ser una imagen jpg o jpeg")
     try:
-        if image.filename is None:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No se proporcionó un archivo")
-        _, ext = os.path.splitext(image.filename)
-        if ext.lower() not in ['jpg', 'jpeg']:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El archivo debe ser una imagen jpg o jpeg")
         image.file.seek(0)
         image_file = image.file.read()
         image_pil = Image.open(io.BytesIO(image_file))
